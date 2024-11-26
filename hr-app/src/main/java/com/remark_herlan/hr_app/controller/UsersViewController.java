@@ -4,17 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.remark_herlan.hr_app.model.ResponseInfo;
-import com.remark_herlan.hr_app.model.Users;
-import com.remark_herlan.hr_app.service.UsersService;
+import com.remark_herlan.hr_app.model.UsersView;
+import com.remark_herlan.hr_app.service.UsersViewService;
 
 /**
  * author: Naimul Hassan
@@ -23,31 +20,25 @@ import com.remark_herlan.hr_app.service.UsersService;
  */
 
 @RestController
-@RequestMapping("users")
-public class UsersController {
+@RequestMapping("users-view")
+public class UsersViewController {
 
 	@Autowired
-	UsersService service;
+	UsersViewService service;
 
 	@GetMapping("all")
-	public ResponseInfo<List<Users>> getAllMethod() {
+	public ResponseInfo<List<UsersView>> getAllMethod() {
 		return service.getAllInfos();
 	}
 
 	@GetMapping("/{id}")
-	public ResponseInfo<Optional<Users>> getMethod(@PathVariable Integer id) {
+	public ResponseInfo<Optional<UsersView>> getMethod(@PathVariable Long id) {
 		return service.getInfo(id);
 	}
 
 	@GetMapping("/byUsername/{username}")
-	public ResponseInfo<Optional<Users>> getByNameMethod(@PathVariable String username) {
+	public ResponseInfo<Optional<UsersView>> getByNameMethod(@PathVariable String username) {
 		return service.getInfoByUsername(username);
-	}
-
-	@PostMapping("/add")
-	public ResponseInfo<String> postMethod(@Validated @RequestBody Users user) {
-		System.out.println(user);
-		return service.saveInfo(user);
 	}
 
 }
