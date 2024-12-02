@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 /**
@@ -20,8 +22,8 @@ public class CandidateEvaluation {
 	@Id
 	private Long id;
 
-	@Column(name = "candidate_number", nullable = false)
-	private Long candidateNumber;
+//	@Column(name = "candidate_number", nullable = false)
+//	private Long candidateNumber;
 
 	@Column(name = "submitted_by", nullable = false)
 	private Long submittedBy;
@@ -37,13 +39,17 @@ public class CandidateEvaluation {
 	private Double avgMarks;
 	private String performance;
 
+	@ManyToOne
+	@JoinColumn(name = "candidate_number", nullable = false)
+	private Candidates candidate;
+
 	public Long getId() {
 		return id;
 	}
 
-	public Long getCandidateNumber() {
-		return candidateNumber;
-	}
+//	public Long getCandidateNumber() {
+//		return candidateNumber;
+//	}
 
 	public Long getSubmittedBy() {
 		return submittedBy;
@@ -93,9 +99,9 @@ public class CandidateEvaluation {
 		this.id = id;
 	}
 
-	public void setCandidateNumber(Long candidateNumber) {
-		this.candidateNumber = candidateNumber;
-	}
+//	public void setCandidateNumber(Long candidateNumber) {
+//		this.candidateNumber = candidateNumber;
+//	}
 
 	public void setSubmittedBy(Long submittedBy) {
 		this.submittedBy = submittedBy;
