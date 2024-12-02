@@ -1,7 +1,10 @@
 package com.remark_herlan.hr_app.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 /**
  * author: Naimul Hassan
@@ -16,6 +19,9 @@ public class Roles {
 	private Long id;
 	private String title;
 	private String status;
+
+	@OneToMany(mappedBy = "role")
+	private List<Users> user;
 
 	public Long getId() {
 		return id;

@@ -25,6 +25,9 @@ public class RolesService {
 	@Autowired
 	RolesDao dao;
 
+	@Autowired
+	GetSequenceService sequenceService;
+
 	public ResponseInfo<List<Roles>> getAllInfos() throws InternalServerException, DataNotFoundException {
 		ResponseInfo<List<Roles>> responseInfo = new ResponseInfo<>();
 
@@ -77,6 +80,9 @@ public class RolesService {
 		ResponseInfo<String> responseInfo = new ResponseInfo<>();
 
 		try {
+			Long sequence = sequenceService.getSequenceId("id", "roles");
+			role.setId(sequence);
+
 			dao.save(role);
 
 			responseInfo.setStatusCode(HttpStatus.OK.value());

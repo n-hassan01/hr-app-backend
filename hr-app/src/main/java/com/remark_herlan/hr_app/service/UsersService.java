@@ -102,12 +102,7 @@ public class UsersService {
 		ResponseInfo<String> responseInfo = new ResponseInfo<>();
 
 		try {
-			ResponseInfo<Long> sequenceResponse = sequenceService.generateNewSequenceId("id", "users");
-			if (!(sequenceResponse.getStatusCode() == 200)) {
-				throw new DataNotFoundException("No data found!");
-			}
-
-			Long sequence = sequenceResponse.getData();
+			Long sequence = sequenceService.getSequenceId("id", "users");
 			user.setId(sequence);
 
 			dao.save(user);

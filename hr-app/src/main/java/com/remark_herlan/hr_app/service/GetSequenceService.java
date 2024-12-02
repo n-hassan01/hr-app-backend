@@ -44,4 +44,22 @@ public class GetSequenceService {
 		}
 	}
 
+	public Long getSequenceId(String primaryKey, String tableName)
+			throws InternalServerException, DataNotFoundException {
+		try {
+			ResponseInfo<Long> sequenceResponse = generateNewSequenceId(primaryKey, tableName);
+			if (!(sequenceResponse.getStatusCode() == 200)) {
+				throw new DataNotFoundException("No column named " + primaryKey + " in " + tableName + " is found!");
+			}
+
+			Long sequence = sequenceResponse.getData();
+
+			return sequence;
+		} catch (DataNotFoundException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new InternalServerException(e.getMessage());
+		}
+	}
+
 }
