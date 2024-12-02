@@ -49,7 +49,7 @@ public class RolesService {
 
 	}
 
-	public ResponseInfo<Optional<Roles>> getInfo(Integer id) throws InternalServerException, DataNotFoundException {
+	public ResponseInfo<Optional<Roles>> getInfo(Long id) throws InternalServerException, DataNotFoundException {
 		ResponseInfo<Optional<Roles>> responseInfo = new ResponseInfo<>();
 
 		try {
@@ -89,7 +89,7 @@ public class RolesService {
 		}
 	}
 
-	public ResponseInfo<String> deleteInfo(Integer id) throws InternalServerException {
+	public ResponseInfo<String> deleteInfo(Long id) throws InternalServerException {
 		ResponseInfo<String> responseInfo = new ResponseInfo<>();
 
 		try {

@@ -385,4 +385,7 @@ public class Candidates {
 		this.designation = designation;
 	}
 
+//	@OneToMany(mappedBy = "candidate")
+//	private List<CandidateFacilitiesCompositeKey> facilities;
+
 }
