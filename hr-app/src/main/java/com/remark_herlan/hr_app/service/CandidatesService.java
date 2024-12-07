@@ -1,6 +1,6 @@
 package com.remark_herlan.hr_app.service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -101,7 +101,7 @@ public class CandidatesService {
 		}
 	}
 
-	public ResponseInfo<List<Candidates>> getInfoByDate(LocalDateTime date)
+	public ResponseInfo<List<Candidates>> getInfoByDate(LocalDate date)
 			throws DataNotFoundException, InternalServerException {
 		ResponseInfo<List<Candidates>> responseInfo = new ResponseInfo<>();
 
