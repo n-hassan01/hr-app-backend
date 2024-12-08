@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.remark_herlan.hr_app.model.Candidates;
 import java.util.List;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -19,6 +20,6 @@ public interface CandidatesDao extends JpaRepository<Candidates, Long> {
 
 	List<Candidates> findByFullName(String fullName);
 	
-	List<Candidates> findByInterviewDate(LocalDateTime interviewDate);
+	List<Candidates> findByInterviewDate(LocalDate interviewDate);
 
 }

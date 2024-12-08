@@ -1,10 +1,12 @@
 package com.remark_herlan.hr_app.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,7 +46,8 @@ public class CandidatesController {
 	}
 
 	@GetMapping("/byDate")
-	public ResponseInfo<List<Candidates>> getByDateMethod(@RequestParam(value = "city") LocalDateTime date)
+	public ResponseInfo<List<Candidates>> getByDateMethod(
+			@RequestParam(value = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date)
 			throws InternalServerException, DataNotFoundException {
 		return service.getInfoByDate(date);
 	}

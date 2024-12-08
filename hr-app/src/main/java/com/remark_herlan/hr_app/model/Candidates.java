@@ -1,7 +1,9 @@
 package com.remark_herlan.hr_app.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -44,7 +46,9 @@ public class Candidates {
 	private String doj;
 	private String probationPeriod;
 	private String investigation;
-	private LocalDateTime interviewDate;
+
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	private LocalDate interviewDate;
 	private Boolean interestedToJoin;
 	private Boolean bond2Years;
 	private Boolean bond5Years;
@@ -54,10 +58,6 @@ public class Candidates {
 	private Boolean workAtFactory;
 	private Boolean operateComp;
 	private Boolean agreedTerms;
-	private String sbu;
-	private String department;
-	private String reportsTo;
-	private String designation;
 	private Boolean haveExperiences;
 
 	@OneToMany(mappedBy = "candidate", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -173,7 +173,7 @@ public class Candidates {
 		return investigation;
 	}
 
-	public LocalDateTime getInterviewDate() {
+	public LocalDate getInterviewDate() {
 		return interviewDate;
 	}
 
@@ -211,22 +211,6 @@ public class Candidates {
 
 	public Boolean getAgreedTerms() {
 		return agreedTerms;
-	}
-
-	public String getSbu() {
-		return sbu;
-	}
-
-	public String getDepartment() {
-		return department;
-	}
-
-	public String getReportsTo() {
-		return reportsTo;
-	}
-
-	public String getDesignation() {
-		return designation;
 	}
 
 	public Boolean getHaveExperiences() {
@@ -349,7 +333,7 @@ public class Candidates {
 		this.investigation = investigation;
 	}
 
-	public void setInterviewDate(LocalDateTime interviewDate) {
+	public void setInterviewDate(LocalDate interviewDate) {
 		this.interviewDate = interviewDate;
 	}
 
@@ -387,22 +371,6 @@ public class Candidates {
 
 	public void setAgreedTerms(Boolean agreedTerms) {
 		this.agreedTerms = agreedTerms;
-	}
-
-	public void setSbu(String sbu) {
-		this.sbu = sbu;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-	public void setReportsTo(String reportsTo) {
-		this.reportsTo = reportsTo;
-	}
-
-	public void setDesignation(String designation) {
-		this.designation = designation;
 	}
 
 	public void setHaveExperiences(Boolean haveExperiences) {
