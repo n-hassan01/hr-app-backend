@@ -130,12 +130,32 @@ public class CandidatesService {
 
 		try {
 			Long sequence = sequenceService.getSequenceId("candidate_number", "candidates");
-			candidate.setCandidateNumber(sequence);
+			if (candidate.getCandidateNumber() == null) {
+				candidate.setCandidateNumber(sequence);
+			}
 
 			Candidates response = dao.save(candidate);
 
 			responseInfo.setStatusCode(HttpStatus.OK.value());
 			responseInfo.setMessage("Successfully added!");
+			responseInfo.setData(response);
+
+			return responseInfo;
+		} catch (Exception e) {
+			throw new InternalServerException(e.getMessage());
+		}
+	}
+
+	public ResponseInfo<Integer> updateInfoByCandidateNumber(Candidates candidate) throws InternalServerException {
+		ResponseInfo<Integer> responseInfo = new ResponseInfo<>();
+
+		try {
+			int response = dao.updateInfoById(candidate.getNoticePeriods(), candidate.getDoj(), candidate.getProbationPeriod(),
+					candidate.getInvestigation(), candidate.getHrNotes(), candidate.getManagementComment(),
+					candidate.getCandidateNumber());
+
+			responseInfo.setStatusCode(HttpStatus.OK.value());
+			responseInfo.setMessage("Successfully updated!");
 			responseInfo.setData(response);
 
 			return responseInfo;
