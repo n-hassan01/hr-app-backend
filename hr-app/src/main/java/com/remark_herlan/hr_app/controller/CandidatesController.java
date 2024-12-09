@@ -1,7 +1,6 @@
 package com.remark_herlan.hr_app.controller;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,6 +56,12 @@ public class CandidatesController {
 	public ResponseInfo<Candidates> postMethod(@RequestBody Candidates candidates)
 			throws InternalServerException, DataNotFoundException {
 		return service.saveInfo(candidates);
+	}
+
+	@PutMapping("/update/byNumber")
+	public ResponseInfo<Integer> updateMethod(@RequestBody Candidates candidates)
+			throws InternalServerException, DataNotFoundException {
+		return service.updateInfoByCandidateNumber(candidates);
 	}
 
 }
