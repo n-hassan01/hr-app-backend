@@ -45,7 +45,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			request.setAttribute("username", username);
 
 			List<Roles> userRoles = dao.findByUsername(username).getRoles();
-
 			request.setAttribute("roles", userRoles);
 
 			SecurityContextHolder.getContext().setAuthentication(jwtTokenUtil.getAuthentication(token));

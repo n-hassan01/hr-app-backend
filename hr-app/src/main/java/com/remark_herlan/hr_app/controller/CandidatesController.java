@@ -24,8 +24,6 @@ import com.remark_herlan.hr_app.model.ResponseInfo;
 import com.remark_herlan.hr_app.model.Roles;
 import com.remark_herlan.hr_app.service.CandidatesService;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 /**
  * author: Naimul Hassan
  * 
@@ -78,14 +76,6 @@ public class CandidatesController {
 		}
 
 		return service.updateInfoByCandidateNumber(candidates);
-	}
-	
-	private String getTokenFromRequest(HttpServletRequest request) {
-		String bearerToken = request.getHeader("Authorization");
-		if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
-			return bearerToken.substring(7);
-		}
-		return null;
 	}
 
 	@PutMapping("/status/update")

@@ -123,9 +123,8 @@ public class CandidateFacilitiesService {
 		ResponseInfo<CandidateFacilities> responseInfo = new ResponseInfo<>();
 
 		try {
-//			boolean isHR = roles.stream().anyMatch(role -> "HR".equals(role.getTitle()));
 			boolean isHR = CheckAuthorization.checkHrAuth(roles);
-			System.out.println(isHR);
+			
 			if (!"CURRENT".equals(candidateFacilities.getFacilityType()) && !isHR) {
 				throw new AuthorizationException("Access denied: Only HR are allowed to perform this action.");
 			}
