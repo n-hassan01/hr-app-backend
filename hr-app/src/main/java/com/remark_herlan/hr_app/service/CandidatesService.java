@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ public class CandidatesService {
 		ResponseInfo<List<Candidates>> responseInfo = new ResponseInfo<>();
 
 		try {
-			List<Candidates> response = dao.findAll();
+			List<Candidates> response = dao.findAll(Sort.by(Sort.Direction.ASC, "candidateNumber"));
 
 			if (response.isEmpty()) {
 				throw new DataNotFoundException("No data found!");
