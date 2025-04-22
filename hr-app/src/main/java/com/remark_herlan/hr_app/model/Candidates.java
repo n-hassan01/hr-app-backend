@@ -47,6 +47,7 @@ public class Candidates {
 	private String probationPeriod;
 	private String investigation;
 	private String status;
+	private String totalYearsOfExperience;
 
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private LocalDate interviewDate;
@@ -396,6 +397,14 @@ public class Candidates {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getTotalYearsOfExperience() {
+		return totalYearsOfExperience;
+	}
+
+	public void setTotalYearsOfExperience(String totalYearsOfExperience) {
+		this.totalYearsOfExperience = totalYearsOfExperience;
 	}
 
 }

@@ -1,5 +1,9 @@
 package com.remark_herlan.hr_app.model;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -37,9 +41,13 @@ public class CandidateFacilities {
 	private String benefitOrAllowance;
 	private String pfOrGratuity;
 	private String transportFacility;
+	private String transportFacilityAllowance;
 	private String incentiveOrKpi;
 	private String mobileCeiling;
 	private String totalCtc;
+
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	private LocalDate fromDate;
 
 	@ManyToOne
 	@JoinColumn(name = "candidate_numbers", nullable = false)
@@ -199,6 +207,22 @@ public class CandidateFacilities {
 
 	public void setCandidate(Candidates candidate) {
 		this.candidate = candidate;
+	}
+
+	public String getTransportFacilityAllowance() {
+		return transportFacilityAllowance;
+	}
+
+	public void setTransportFacilityAllowance(String transportFacilityAllowance) {
+		this.transportFacilityAllowance = transportFacilityAllowance;
+	}
+
+	public LocalDate getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(LocalDate fromDate) {
+		this.fromDate = fromDate;
 	}
 
 }

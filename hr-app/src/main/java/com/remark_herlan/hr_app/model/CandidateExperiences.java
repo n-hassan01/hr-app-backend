@@ -1,5 +1,9 @@
 package com.remark_herlan.hr_app.model;
 
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -19,6 +23,11 @@ public class CandidateExperiences {
 	private String experienceField;
 	private String organization;
 	private String years;
+
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	private LocalDate fromDate;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	private LocalDate toDate;
 
 	@ManyToOne
 	@JoinColumn(name = "candidate_number", nullable = false)
@@ -58,6 +67,22 @@ public class CandidateExperiences {
 
 	public void setCandidate(Candidates candidate) {
 		this.candidate = candidate;
+	}
+
+	public LocalDate getFromDate() {
+		return fromDate;
+	}
+
+	public LocalDate getToDate() {
+		return toDate;
+	}
+
+	public void setFromDate(LocalDate fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public void setToDate(LocalDate toDate) {
+		this.toDate = toDate;
 	}
 
 }
